@@ -1,5 +1,4 @@
-﻿using crud.Models;
-using crud.Services;
+﻿using crud.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 

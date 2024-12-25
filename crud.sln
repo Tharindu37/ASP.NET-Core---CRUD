@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "crud", "crud\crud.csproj", "{C49486E9-4CED-493E-8173-65D190AAD7AF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "crud", "crud\crud.csproj", "{C49486E9-4CED-493E-8173-65D190AAD7AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "crud.Models", "crud.Models\crud.Models.csproj", "{E3D068DC-E1CE-41C6-ADC4-A0485741B96E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "crud.Services", "crud.Services\crud.Services.csproj", "{B9D0EE7E-F93F-44D2-AF5B-72B5934E90C9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{C49486E9-4CED-493E-8173-65D190AAD7AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C49486E9-4CED-493E-8173-65D190AAD7AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C49486E9-4CED-493E-8173-65D190AAD7AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3D068DC-E1CE-41C6-ADC4-A0485741B96E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3D068DC-E1CE-41C6-ADC4-A0485741B96E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3D068DC-E1CE-41C6-ADC4-A0485741B96E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3D068DC-E1CE-41C6-ADC4-A0485741B96E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9D0EE7E-F93F-44D2-AF5B-72B5934E90C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9D0EE7E-F93F-44D2-AF5B-72B5934E90C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9D0EE7E-F93F-44D2-AF5B-72B5934E90C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9D0EE7E-F93F-44D2-AF5B-72B5934E90C9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
