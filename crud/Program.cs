@@ -11,7 +11,8 @@ builder.Services.AddSwaggerGen();
 
 // Day 4
 //builder.Services.AddSingleton<IProductRepository, ProductService>();// Only one instance for application
-builder.Services.AddScoped<IProductRepository, ProductService>(); // New Object is created for request
+//builder.Services.AddScoped<IProductRepository, ProductService>(); // New Object is created for request
+builder.Services.AddScoped<IProductRepository, ProductSqlServerService>();
 //builder.Services.AddTransient<IProductRepository, ProductService>(); // Always a new object is presented
 
 var app = builder.Build();

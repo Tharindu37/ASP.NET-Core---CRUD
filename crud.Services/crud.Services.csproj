@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\crud.DataAccess\crud.DataAccess.csproj" />
     <ProjectReference Include="..\crud.Models\crud.Models.csproj" />
   </ItemGroup>
 
