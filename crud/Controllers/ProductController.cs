@@ -1,10 +1,10 @@
-﻿using crud.Services;
+﻿using crud.Services.Products;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace crud.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/products")]
     [ApiController]
     public class ProductController : ControllerBase
     {
@@ -70,7 +70,7 @@ namespace crud.Controllers
             return Ok(products);
         }
 
-        
+
 
         //[HttpPost("{id}")]
         //public IActionResult product(int id)
@@ -79,12 +79,23 @@ namespace crud.Controllers
         //    return Ok(product);
         //}
 
-        [HttpGet("{id?}")]
-        public IActionResult product(int? id)
+        //[HttpGet("{id?}")]
+        //public IActionResult product(int? id)
+        //{
+        //    if (id is null)
+        //        return Ok(_productService.allProducts());
+        //    var product = _productService.allProducts().Where(p => p.Id == id);
+
+        //    return Ok(product);
+        //}
+
+        [HttpGet("{id}")]
+        public IActionResult product(int id)
         {
-            if (id is null)
-                return Ok(_productService.allProducts());
-            var product = _productService.allProducts().Where(p => p.Id == id);
+            var product = _productService.getProduct(id);
+            if (product == null)
+                return NotFound();
+
             return Ok(product);
         }
     }

@@ -5,10 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace crud.Services
+namespace crud.Services.Users
 {
-    public interface IProductRepository
+    public interface IUserRepository
     {
-        public List<Product> allProducts();
+        public List<User> GetUsers();
+        public User GetUser(int id);
     }
 }

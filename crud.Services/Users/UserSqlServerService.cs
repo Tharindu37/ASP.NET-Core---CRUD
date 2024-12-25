@@ -6,14 +6,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace crud.Services
+namespace crud.Services.Users
 {
-    public class ProductSqlServerService : IProductRepository
+    public class UserSqlServerService : IUserRepository
     {
         private readonly ProductDbContext _context = new ProductDbContext();
-        public List<Product> allProducts()
+
+
+        public User GetUser(int id)
         {
-            return _context.Products.ToList();
+            return _context.Users.Find(id);
+        }
+
+        public List<User> GetUsers()
+        {
+            return _context.Users.ToList();
         }
     }
 }
