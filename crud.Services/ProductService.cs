@@ -2,7 +2,7 @@
 
 namespace crud.Services
 {
-    public class ProductService
+    public class ProductService : IProductRepository
     {
         // Get Products
         public List<Product> allProducts()

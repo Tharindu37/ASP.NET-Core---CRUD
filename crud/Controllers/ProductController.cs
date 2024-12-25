@@ -8,12 +8,19 @@ namespace crud.Controllers
     [ApiController]
     public class ProductController : ControllerBase
     {
-        private ProductService _productService;
+        //private ProductService _productService;
 
-        public ProductController()
+        //public ProductController()
+        //{
+        //    _productService=new ProductService();
+        //}
+
+        private readonly IProductRepository _productService;
+        public ProductController(IProductRepository repository)
         {
-            _productService=new ProductService();
+            _productService = repository;
         }
+
         // Day 1
 
         //[HttpGet]
