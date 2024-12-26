@@ -15,5 +15,7 @@ namespace crud.Services.Products
         public Product GetProduct(int userId, int Id);
         public List<Product> GetProducts(int userId);
         public Product AddProduct(int userId,  Product product);
+        public void UpdateProduct(Product product);
+        public void DeleteProduct(Product product);
     }
 }

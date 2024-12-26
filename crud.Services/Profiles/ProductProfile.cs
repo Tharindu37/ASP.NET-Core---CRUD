@@ -15,6 +15,7 @@ namespace crud.Services.Profiles
         {
             CreateMap<Product, ProductDto>();
             CreateMap<CreateProductDto, Product>();
+            CreateMap<UpdateProductDto, Product>();
         }
     }
 }

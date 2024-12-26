@@ -104,8 +104,8 @@ namespace crud.Controllers
         //    return Ok(product);
         //}
 
-        [HttpGet("{id}", Name ="GetProduct")]
-        public IActionResult product(int userId,int id)
+        [HttpGet("{id}", Name = "GetProduct")]
+        public IActionResult product(int userId, int id)
         {
             //var product = _productService.getProduct(id);
             var product = _productService.GetProduct(userId, id);
@@ -122,6 +122,31 @@ namespace crud.Controllers
             var newProduct = _productService.AddProduct(userId, productEntity);
             var returnProduct = _mapper.Map<ProductDto>(newProduct);
             return CreatedAtRoute("GetProduct", new { userId = userId, id = returnProduct.Id }, returnProduct);
+        }
+
+        [HttpPut("{productId}")]
+        public ActionResult UpdateProduct(int userId, int productId, UpdateProductDto product)
+        {
+            var updateProduct = _productService.GetProduct(userId, productId);
+            if (updateProduct is null)
+            {
+                return NotFound();
+            }
+            _mapper.Map(product, updateProduct);
+            _productService.UpdateProduct(updateProduct);
+            return NoContent();
+        }
+
+        [HttpDelete("{productId}")]
+        public ActionResult DeleteProduct(int userId, int productId)
+        {
+            var product = _productService.GetProduct(userId, productId);
+            if (product is null)
+            {
+                return NotFound();
+            }
+            _productService.DeleteProduct(product);
+            return NoContent();
         }
     }
 }

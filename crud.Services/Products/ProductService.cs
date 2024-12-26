@@ -19,6 +19,11 @@ namespace crud.Services.Products
             return products;
         }
 
+        public void DeleteProduct(Product product)
+        {
+            throw new NotImplementedException();
+        }
+
         public Product getProduct(int Id)
         {
             throw new NotImplementedException();
@@ -30,6 +35,11 @@ namespace crud.Services.Products
         }
 
         public List<Product> GetProducts(int userId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateProduct(Product product)
         {
             throw new NotImplementedException();
         }

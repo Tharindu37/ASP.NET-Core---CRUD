@@ -25,6 +25,12 @@ namespace crud.Services.Products
             return _context.Products.ToList();
         }
 
+        public void DeleteProduct(Product product)
+        {
+            _context.Remove(product);
+            _context.SaveChanges();
+        }
+
         public Product getProduct(int Id)
         {
             return _context.Products.Find(Id);
@@ -38,6 +44,11 @@ namespace crud.Services.Products
         public List<Product> GetProducts(int userId)
         {
             return _context.Products.Where(p => p.UserId == userId).ToList();
+        }
+
+        public void UpdateProduct(Product product)
+        {
+            _context.SaveChanges();
         }
     }
 }
