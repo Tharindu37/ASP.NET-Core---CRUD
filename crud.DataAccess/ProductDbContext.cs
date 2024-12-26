@@ -22,9 +22,11 @@ namespace crud.DataAccess
         override protected void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>().HasData(
-                new User { Id = 1, Name = "User 1-db", AddressNo="42", Street="Street 1", City="Kurunegala" },
-                new User { Id = 2, Name = "User 2-db", AddressNo="33", Street="Street 2", City="Colombo" },
-                new User { Id = 3, Name = "User 3-db", AddressNo="35", Street="Street 3", City="Colombo" }
+                new User { Id = 1, Name = "User 1-db", AddressNo="42", Street="Street 1", City="Kurunegala", Type = "admin" },
+                new User { Id = 2, Name = "User 2-db", AddressNo="33", Street="Street 2", City="Colombo", Type="admin" },
+                new User { Id = 3, Name = "User 3-db", AddressNo="35", Street="Street 3", City="Colombo", Type="customer" },
+                new User { Id = 4, Name = "User 4-db", AddressNo = "35", Street = "Street 4", City = "Colombo", Type = "customer" },
+                new User { Id = 5, Name = "User 5-db", AddressNo = "44", Street = "Street 4", City = "Galgamuwa", Type = "customer" }
             );
 
             modelBuilder.Entity<Product>().HasData(

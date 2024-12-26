@@ -20,6 +20,9 @@ namespace crud.Models
         [MaxLength(250)]
         [Required]
         public string City { get; set; }
+        [MaxLength(250)]
+        [Required]
+        public string Type { get; set; }
         public ICollection<Product> Products { get; set; } = new List<Product>();
     }
 }

@@ -34,21 +34,29 @@ namespace crud.Controllers
         //    return Ok(usersDto);
         //}
 
+        //[HttpGet]
+        //public ActionResult<ICollection<UserDto>> getUsers()
+        //{
+        //    var users = _repository.GetUsers();
+        //    //var usersDto = new List<UserDto>();
+        //    //foreach (var user in users)
+        //    //{
+        //    //    usersDto.Add(new UserDto
+        //    //    {
+        //    //        Id = user.Id,
+        //    //        Name = user.Name,
+        //    //        Address = $"{user.AddressNo} {user.Street} {user.City}"
+        //    //    });
+        //    //}
+        //    var usersDto=_mapper.Map<ICollection<UserDto>>(users);
+        //    return Ok(usersDto);
+        //}
+
         [HttpGet]
-        public ActionResult<ICollection<UserDto>> getUsers()
+        public ActionResult<ICollection<UserDto>> getUsers([FromQuery]string? type, [FromQuery]string? search)
         {
-            var users = _repository.GetUsers();
-            //var usersDto = new List<UserDto>();
-            //foreach (var user in users)
-            //{
-            //    usersDto.Add(new UserDto
-            //    {
-            //        Id = user.Id,
-            //        Name = user.Name,
-            //        Address = $"{user.AddressNo} {user.Street} {user.City}"
-            //    });
-            //}
-            var usersDto=_mapper.Map<ICollection<UserDto>>(users);
+            var users = _repository.GetAllUsers(type, search);
+            var usersDto = _mapper.Map<ICollection<UserDto>>(users);
             return Ok(usersDto);
         }
 
