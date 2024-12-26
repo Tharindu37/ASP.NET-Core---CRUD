@@ -4,6 +4,11 @@ namespace crud.Services.Products
 {
     public class ProductService : IProductRepository
     {
+        public Product AddProduct(int userId, Product product)
+        {
+            throw new NotImplementedException();
+        }
+
         // Get Products
         public List<Product> allProducts()
         {

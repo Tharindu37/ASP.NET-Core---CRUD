@@ -14,6 +14,7 @@ namespace crud.Services.Profiles
     {
         public UserProfile() {
             CreateMap<User, UserDto>().ForMember(dest => dest.Address, opt => opt.MapFrom(src => $"{src.AddressNo}, {src.Street}, {src.City}"));
+            CreateMap<CreateUserDto, User>();
         }
     }
 }

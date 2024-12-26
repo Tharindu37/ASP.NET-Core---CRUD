@@ -48,5 +48,12 @@ namespace crud.Services.Users
             return userCollection.ToList();
 
         }
+
+        public User AddUser(User user)
+        {
+            _context.Users.Add(user);
+            _context.SaveChanges();
+            return _context.Users.Find(user.Id);
+        }
     }
 }

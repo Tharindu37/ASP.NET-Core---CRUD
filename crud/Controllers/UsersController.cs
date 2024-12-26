@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using crud.Models;
 using crud.Services.Models;
 using crud.Services.Users;
 using Microsoft.AspNetCore.Http;
@@ -71,7 +72,7 @@ namespace crud.Controllers
         //    return Ok(userDto);
         //}
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name="GetUser")]
         public ActionResult<UserDto> getUser(int id)
         {
             var user = _repository.GetUser(id);
@@ -81,6 +82,15 @@ namespace crud.Controllers
             }
             var userDto = _mapper.Map<UserDto>(user);
             return Ok(userDto);
+        }
+
+        [HttpPost]
+        public ActionResult<UserDto> createUser(CreateUserDto user)
+        {
+            var userEntity = _mapper.Map<User>(user);
+            var newUser = _repository.AddUser(userEntity);
+            var returnUser = _mapper.Map<UserDto>(newUser);
+            return CreatedAtRoute("GetUser", new {id = returnUser.Id}, returnUser);
         }
     }
 }

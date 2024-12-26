@@ -12,5 +12,6 @@ namespace crud.Services.Users
         public List<User> GetUsers();
         public User GetUser(int id);
         public List<User> GetAllUsers(string type, string search);
+        public User AddUser(User user);
     }
 }

@@ -11,6 +11,15 @@ namespace crud.Services.Products
     public class ProductSqlServerService : IProductRepository
     {
         private readonly ProductDbContext _context = new ProductDbContext();
+
+        public Product AddProduct(int userId, Product product)
+        {
+            product.UserId = userId;
+            _context.Products.Add(product);
+            _context.SaveChanges();
+            return _context.Products.Find(product.Id);
+        }
+
         public List<Product> allProducts()
         {
             return _context.Products.ToList();

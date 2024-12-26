@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using crud.Models;
 using crud.Services.Models;
 using crud.Services.Products;
 using Microsoft.AspNetCore.Http;
@@ -103,7 +104,7 @@ namespace crud.Controllers
         //    return Ok(product);
         //}
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name ="GetProduct")]
         public IActionResult product(int userId,int id)
         {
             //var product = _productService.getProduct(id);
@@ -112,6 +113,15 @@ namespace crud.Controllers
                 return NotFound();
             var productDto = _mapper.Map<ProductDto>(product);
             return Ok(productDto);
+        }
+
+        [HttpPost]
+        public ActionResult<ProductDto> AddProduct(int userId, CreateProductDto product)
+        {
+            var productEntity = _mapper.Map<Product>(product);
+            var newProduct = _productService.AddProduct(userId, productEntity);
+            var returnProduct = _mapper.Map<ProductDto>(newProduct);
+            return CreatedAtRoute("GetProduct", new { userId = userId, id = returnProduct.Id }, returnProduct);
         }
     }
 }
