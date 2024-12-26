@@ -20,5 +20,15 @@ namespace crud.Services.Products
         {
             return _context.Products.Find(Id);
         }
+
+        public Product GetProduct(int userId, int Id)
+        {
+            return _context.Products.Where(p => p.UserId == userId && p.Id == Id).FirstOrDefault();
+        }
+
+        public List<Product> GetProducts(int userId)
+        {
+            return _context.Products.Where(p => p.UserId == userId).ToList();
+        }
     }
 }

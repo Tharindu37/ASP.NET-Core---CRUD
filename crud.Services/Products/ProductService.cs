@@ -18,5 +18,15 @@ namespace crud.Services.Products
         {
             throw new NotImplementedException();
         }
+
+        public Product GetProduct(int userId, int Id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Product> GetProducts(int userId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

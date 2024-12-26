@@ -11,5 +11,8 @@ namespace crud.Services.Products
     {
         public List<Product> allProducts();
         public Product getProduct(int Id);
+
+        public Product GetProduct(int userId, int Id);
+        public List<Product> GetProducts(int userId);
     }
 }

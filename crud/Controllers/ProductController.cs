@@ -1,10 +1,13 @@
-﻿using crud.Services.Products;
+﻿using AutoMapper;
+using crud.Services.Models;
+using crud.Services.Products;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace crud.Controllers
 {
-    [Route("api/products")]
+    //[Route("api/products")]
+    [Route("api/users/{userId}/products")]
     [ApiController]
     public class ProductController : ControllerBase
     {
@@ -16,9 +19,11 @@ namespace crud.Controllers
         //}
 
         private readonly IProductRepository _productService;
-        public ProductController(IProductRepository repository)
+        private readonly IMapper _mapper;
+        public ProductController(IProductRepository repository, IMapper mapper)
         {
             _productService = repository;
+            _mapper = mapper;
         }
 
         // Day 1
@@ -63,11 +68,20 @@ namespace crud.Controllers
 
         // Day 3
 
+        //[HttpGet]
+        //public IActionResult products()
+        //{
+        //    var products = _productService.allProducts();
+        //    return Ok(products);
+        //}
+
+        // Day 7
         [HttpGet]
-        public IActionResult products()
+        public IActionResult products(int userId)
         {
-            var products = _productService.allProducts();
-            return Ok(products);
+            var products = _productService.GetProducts(userId);
+            var productsDto = _mapper.Map<ICollection<ProductDto>>(products);
+            return Ok(productsDto);
         }
 
 
@@ -90,13 +104,14 @@ namespace crud.Controllers
         //}
 
         [HttpGet("{id}")]
-        public IActionResult product(int id)
+        public IActionResult product(int userId,int id)
         {
-            var product = _productService.getProduct(id);
+            //var product = _productService.getProduct(id);
+            var product = _productService.GetProduct(userId, id);
             if (product == null)
                 return NotFound();
-
-            return Ok(product);
+            var productDto = _mapper.Map<ProductDto>(product);
+            return Ok(productDto);
         }
     }
 }

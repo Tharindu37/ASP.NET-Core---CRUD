@@ -1,4 +1,6 @@
-﻿using crud.Services.Users;
+﻿using AutoMapper;
+using crud.Services.Models;
+using crud.Services.Users;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,26 +11,68 @@ namespace crud.Controllers
     public class UsersController : ControllerBase
     {
         private readonly IUserRepository _repository;
-        public UsersController(IUserRepository repository)
+        private readonly IMapper _mapper;
+        public UsersController(IUserRepository repository, IMapper mapper)
         {
             _repository = repository;
+            _mapper = mapper;
         }
+
+        //[HttpGet]
+        //public IActionResult getUsers()
+        //{
+        //   var users = _repository.GetUsers();
+        //    var usersDto = new List<UserDto>();
+        //    foreach (var user in users) { 
+        //        usersDto.Add(new UserDto
+        //        {
+        //            Id = user.Id,
+        //            Name = user.Name,
+        //            Address = $"{user.AddressNo} {user.Street} {user.City}"
+        //        });
+        //    }
+        //    return Ok(usersDto);
+        //}
 
         [HttpGet]
-        public IActionResult getUsers()
+        public ActionResult<ICollection<UserDto>> getUsers()
         {
-           
-            return Ok(_repository.GetUsers());
+            var users = _repository.GetUsers();
+            //var usersDto = new List<UserDto>();
+            //foreach (var user in users)
+            //{
+            //    usersDto.Add(new UserDto
+            //    {
+            //        Id = user.Id,
+            //        Name = user.Name,
+            //        Address = $"{user.AddressNo} {user.Street} {user.City}"
+            //    });
+            //}
+            var usersDto=_mapper.Map<ICollection<UserDto>>(users);
+            return Ok(usersDto);
         }
 
+        //[HttpGet("{id}")]
+        //public IActionResult getUser(int id) {
+        //    var user = _repository.GetUser(id);
+        //    if (user == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    var userDto = _mapper.Map<UserDto>(user);
+        //    return Ok(userDto);
+        //}
+
         [HttpGet("{id}")]
-        public IActionResult getUser(int id) {
+        public ActionResult<UserDto> getUser(int id)
+        {
             var user = _repository.GetUser(id);
             if (user == null)
             {
                 return NotFound();
             }
-            return Ok(user);
+            var userDto = _mapper.Map<UserDto>(user);
+            return Ok(userDto);
         }
     }
 }
